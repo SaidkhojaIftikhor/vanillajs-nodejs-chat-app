@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container_wrapper {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background-color: rgb(53, 113, 161);
+  color: #fff;
+  padding: 0.2rem 1rem;
+}
+
+.input {
+  margin-top: auto;
+}
+
+.body {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.body {
+  padding: 0 1rem;
+}
+
+.input {
+  padding-left: 1rem;
+}
+
+.message {
+  display: flex;
+  margin: 1.5rem 0;
+}
+
+.message .info {
+  width: 100%;
+  padding-right: 2rem;
+}
+
+.message .user {
+  display: flex;
+  align-items: center;
+}
+
+.message .user .date {
+  color: rgb(138, 138, 138);
+  padding-left: 8px;
+  font-size: 0.7rem;
+}
+
+.message .user .name {
+  color: rgb(53, 113, 161);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.message .avatar {
+  padding-right: 1rem;
+}
+
+.message .avatar img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.input {
+  background-color: rgb(255, 248, 223);
+}
+
+.input .wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input .area {
+  flex: 1;
+}
+
+.input input {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  font-size: 18px;
+}
+
+.input button {
+  border: none;
+  padding: 0.7rem 1rem;
+  background-color: rgb(53, 113, 161);
+  color: #fff;
+  cursor: pointer;
+}
+
+.input button:hover {
+  opacity: 0.8;
+}
