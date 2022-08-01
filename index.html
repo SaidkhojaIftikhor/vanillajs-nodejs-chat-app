@@ -8,23 +8,38 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <div class="container_wrapper">
-        <div class="title">Chat</div>
-        <div class="body" id="messages"></div>
-        <div class="input">
-          <div class="wrapper">
-            <div class="area">
-              <input
-                type="text"
-                placeholder="type something to send"
-                id="inputForm"
-              />
-            </div>
-            <div class="send-button">
-              <button id="submitBtn">Send</button>
+    <div class="root">
+      <div class="container">
+        <div class="container_wrapper">
+          <div class="title">Chat</div>
+
+          <div class="body_container">
+            <div class="body" id="messages"></div>
+          </div>
+          <div class="input">
+            <div class="wrapper">
+              <div class="area">
+                <input
+                  type="text"
+                  placeholder="type something to send"
+                  id="inputForm"
+                />
+              </div>
+              <div class="send-button">
+                <button id="submitBtn">Send</button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="online_users">
+        <div class="online_users_wrapper">
+          <div>
+            <h5 style="text-align: center; margin-bottom: 16px">
+              Who's <span style="color: green">online</span>
+            </h5>
+          </div>
+          <div id="online"></div>
         </div>
       </div>
     </div>

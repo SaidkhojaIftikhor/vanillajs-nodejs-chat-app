@@ -8,6 +8,12 @@ socket.on("message", function (message) {
   addMessage(message);
 });
 
+socket.on("updateOnlineUsers", function (users) {
+  const userArr = Object.keys(users).map((id) => users[id]);
+
+  updateUsers(userArr);
+});
+
 let _username;
 let avatarId = Math.round(Math.random() * 1800);
 
@@ -18,6 +24,13 @@ while (true) {
 
   alert("Wrong username");
 }
+
+_username = HtmlEncode(_username);
+
+socket.emit("user", {
+  username: _username,
+  avatarId,
+});
 
 const messageContainer = document.getElementById("messages"),
   inputForm = document.getElementById("inputForm"),
@@ -41,7 +54,6 @@ function formatTime(date) {
 }
 
 function addMessage(message) {
-  console.log(message);
   let parsed = HtmlEncode(message.text);
 
   let structure = `
@@ -63,8 +75,35 @@ function addMessage(message) {
   </div>
 </div>
 `;
+  const messageBodyEl = document.querySelector(".body_container");
 
   messageContainer.innerHTML += structure;
+
+  setTimeout(() => {
+    messageBodyEl.scrollTop = messageBodyEl.scrollHeight;
+  }, 0);
+}
+
+function updateUsers(users) {
+  const container = document.getElementById("online");
+  let structures = "";
+
+  for (let i = 0; i < users.length; i++) {
+    structures += `
+  <div class="message" style="margin: 8px 0 0 0 ">
+  <div class="avatar">
+    <img
+      src="https://www.xat.com/web_gear/chat/av/${users[i].avatarId}.png"
+      alt="avatar"
+    />
+  </div>
+  <div class="info">
+    <div class="name" style="padding-top: 6px">${users[i].username}</div>
+  </div>
+</div>`;
+  }
+
+  container.innerHTML = structures;
 }
 
 submitButton.onclick = function (e) {
@@ -77,14 +116,14 @@ window.onkeydown = function (e) {
   }
 };
 
-function handleSubmit(value) {
+async function handleSubmit(value) {
   if (value.trim() === "") {
     return;
   }
+
   socket.emit("message", {
     username: _username,
     text: value,
-    date: new Date(),
     avatarId,
   });
 
